@@ -15,7 +15,7 @@ pipeline {
             steps {
                 sh 'echo Checking out the code...'
                 // Uncomment the next line to actually pull code from your repository
-                git branch: 'main', url: 'https://github.com/Rushig1108/ci-cd.git'
+               // git branch: 'main', url: 'https://github.com/Rushig1108/ci-cd.git'
             }
         }
 
