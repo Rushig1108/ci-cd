@@ -15,7 +15,7 @@ spec:
         app: test
     spec:
       containers:
-      - image: <your-docker-image-name>  # Replace with the actual image name you want to deploy
+      - image: rushigunjal1108/ci-cd-python-app:${BUILD_NUMBER}  # Dynamic Docker image tag from Jenkins
         name: test-container
         ports:
         - containerPort: 80  # Replace if your app uses a different port inside the container
@@ -33,3 +33,4 @@ spec:
     port: 80             # Exposed port within the cluster
     targetPort: 80       # Port on the container
     nodePort: 30007      # NodePort for accessing externally (30000-32767 range for NodePort services)
+
