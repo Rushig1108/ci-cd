@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: test
+  name: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - image: <your-docker-image-name>  # Replace with the actual image name you want to deploy
+        name: test-container
+        ports:
+        - containerPort: 80  # Replace if your app uses a different port inside the container
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-service
+spec:
+  selector:
+    app: test
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80             # Exposed port within the cluster
+    targetPort: 80       # Port on the container
+    nodePort: 30007      # NodePort for accessing externally (30000-32767 range for NodePort services)
